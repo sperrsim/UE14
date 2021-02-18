@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<GridPane alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controllerview.Controller">
+<GridPane alignment="center" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerview.Controller">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints halignment="RIGHT" />
@@ -24,33 +23,33 @@
    </rowConstraints>
    <children>
       <Label text="Adresse" GridPane.rowIndex="1" />
-      <TextField GridPane.columnIndex="1" />
+      <TextField onAction="#name_txt" GridPane.columnIndex="1" />
       <Label text="Name" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField onAction="#address_txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Label layoutX="10.0" layoutY="49.0" text="Telefonnummer" GridPane.rowIndex="2" />
       <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
             <HBox>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="100.0" text="Seite -/-" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="&gt;&gt;" />
+                  <Label fx:id="site_lbl" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="100.0" text="Seite -/-" />
+                  <Button fx:id="next_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="&gt;&gt;" />
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Löschen" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Änderungen Speichern" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="delete_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Löschen" />
+                  <Button fx:id="save_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Änderungen Speichern" textAlignment="CENTER" wrapText="true" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="CSV Laden" GridPane.rowIndex="4" />
+      <Button fx:id="saveCSV_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="CSV Laden" GridPane.rowIndex="4" />
       <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="CSV Speichern" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField onAction="#phone_txt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <VBox GridPane.rowIndex="3">
          <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="&lt;&lt;" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Hinzufügen" />
+            <Button fx:id="previous_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="&lt;&lt;" />
+            <Button fx:id="add_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Hinzufügen" />
          </children>
       </VBox>
    </children>
