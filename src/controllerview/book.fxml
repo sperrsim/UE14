@@ -23,33 +23,33 @@
    </rowConstraints>
    <children>
       <Label text="Adresse" GridPane.rowIndex="1" />
-      <TextField onAction="#name_txt" GridPane.columnIndex="1" />
+      <TextField fx:id="name_txt" GridPane.columnIndex="1" />
       <Label text="Name" />
-      <TextField onAction="#address_txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="address_txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Label layoutX="10.0" layoutY="49.0" text="Telefonnummer" GridPane.rowIndex="2" />
       <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
             <HBox>
                <children>
                   <Label fx:id="site_lbl" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="100.0" text="Seite -/-" />
-                  <Button fx:id="next_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="&gt;&gt;" />
+                  <Button fx:id="next_btn" mnemonicParsing="false" onAction="#nextPage" prefHeight="50.0" prefWidth="100.0" text="&gt;&gt;" />
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Button fx:id="delete_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Löschen" />
-                  <Button fx:id="save_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Änderungen Speichern" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="delete_btn" mnemonicParsing="false" onAction="#delete" prefHeight="50.0" prefWidth="100.0" text="Löschen" />
+                  <Button fx:id="save_btn" mnemonicParsing="false" onAction="#save" prefHeight="50.0" prefWidth="100.0" text="Änderungen Speichern" textAlignment="CENTER" wrapText="true" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="saveCSV_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="CSV Laden" GridPane.rowIndex="4" />
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="CSV Speichern" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField onAction="#phone_txt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button fx:id="saveCSV_btn" mnemonicParsing="false" onAction="#load_csv" prefHeight="50.0" prefWidth="100.0" text="CSV Laden" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#save_csv" prefHeight="50.0" prefWidth="100.0" text="CSV Speichern" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField fx:id="phone_txt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <VBox GridPane.rowIndex="3">
          <children>
-            <Button fx:id="previous_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="&lt;&lt;" />
-            <Button fx:id="add_btn" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Hinzufügen" />
+            <Button fx:id="previous_btn" mnemonicParsing="false" onAction="#previousPage" prefHeight="50.0" prefWidth="100.0" text="&lt;&lt;" />
+            <Button fx:id="add_btn" mnemonicParsing="false" onAction="#addOnAction" prefHeight="50.0" prefWidth="100.0" text="Hinzufügen" />
          </children>
       </VBox>
    </children>

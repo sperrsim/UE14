@@ -9,6 +9,19 @@ public class Person {
     private String address;
     private String phonenumber;
 
+    public Person()
+    {
+        setAddress("-");
+        setName("-");
+        setPhonenumber("-");
+    }
+
+    public Person(String name, String address, String phonenumber) {
+        this.name = name;
+        this.address = address;
+        this.phonenumber = phonenumber;
+    }
+
     @Override
     public String toString() {
         return name + "," + address + "," + phonenumber;
