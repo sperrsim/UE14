@@ -13,9 +13,6 @@ import javafx.stage.WindowEvent;
 import model.Person;
 import model.Phonebook;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,7 +20,7 @@ import java.util.ResourceBundle;
  * @author Simon Sperr
  * @version 2020.3, 18.02.2021
  **/
-public class Controller implements Initializable {
+public class PhonebookC implements Initializable {
 
     @FXML
     private TextField name_txt;
@@ -98,18 +95,24 @@ public class Controller implements Initializable {
 
     public static void show(Stage primaryStage)
     {
-        FXMLLoader fxl = new FXMLLoader(Controller.class.getResource("controllerview/book.fxml"));
-        Parent root = (Parent)fxl.load();
-        primaryStage.setTitle("Phonebook in JavaFX by Sperr");
-        primaryStage.setScene(new Scene(root, 500, 500));
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Phonebook ctrl = fxl.getController();
-                ctrl.save_csv();
-            }
-        });
-        primaryStage.show();
+        try {
+            FXMLLoader fxl = new FXMLLoader(PhonebookC.class.getResource("book.fxml"));
+            Parent root = (Parent) fxl.load();
+            primaryStage.setTitle("Phonebook in JavaFX by Sperr");
+            primaryStage.setScene(new Scene(root, 500, 500));
+            primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    PhonebookC ctrl = fxl.getController();
+                    ctrl.phonebook.save_csv();
+                }
+            });
+            primaryStage.show();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

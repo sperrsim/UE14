@@ -46,7 +46,7 @@ public class Phonebook {
                 String split[] = s.split(",");
                 phonebook.add(new Person((split.length >= 1 && !split[0].isEmpty() ? split[0] : ""),
                         (split.length >= 2 && !split[1].isEmpty() ? split[1] : null),
-                        (split.length >= 3 && !split[2].isEmpty() ? split[2] : ""));
+                        (split.length >= 3 && !split[2].isEmpty() ? split[2] : "")));
             }
             System.out.println(phonebook.size() + " Kontakte erfolgreich geladen!");
         } catch (Exception e) {
