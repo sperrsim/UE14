@@ -11,9 +11,9 @@ public class Person implements Comparable{
 
     public Person()
     {
-        setAddress("");
-        setName("");
-        setPhonenumber("");
+        address = "";
+        name = "";
+        phonenumber = "";
     }
 
     public Person(String name, String address, String phonenumber) {
@@ -27,15 +27,30 @@ public class Person implements Comparable{
         return name + "," + address + "," + phonenumber;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws Exception{
+        if (name == null) {
+            throw new Exception("Name muss angegeben werden!");
+        }
+
+        name = name.trim();
+
         this.name = name;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address){
         this.address = address;
     }
 
-    public void setPhonenumber(String phonenumber) {
+    public void setPhonenumber(String phonenumber) throws Exception{
+        if (phonenumber == null) {
+            throw new Exception("Geben sie bitte eine Telefonnummer ein!");
+        }
+
+        phonenumber = phonenumber.trim();
+
+        if (!phonenumber.isEmpty() && !phonenumber.matches("^[0-9]*/[0-9]*$")) {
+            throw new Exception("Telefonnummer darf nur aus Ziffern und \"/\" bestehen!");
+        }
         this.phonenumber = phonenumber;
     }
 

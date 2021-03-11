@@ -38,13 +38,12 @@ public class PhonebookC implements Initializable {
     public void addOnAction()
     {
         phonebook.newPage();
-        page = phonebook.getSize();
+        page = 1;
         displayPage(page);
     }
 
     public void nextPage()
     {
-        save();
         if(page < phonebook.getSize())
         {
             page++;
@@ -59,7 +58,6 @@ public class PhonebookC implements Initializable {
 
     public void previousPage()
     {
-        save();
         if(page > 1)
         {
             page--;
@@ -74,23 +72,38 @@ public class PhonebookC implements Initializable {
 
     public void save()
     {
-        phonebook.saveChanges(name_txt.getText(), address_txt.getText(), phone_txt.getText(), page-1);
+        try {
+            Person p = phonebook.getPerson(page-1);
+            p.setName(name_txt.getText());
+            p.setAddress(address_txt.getText());
+            p.setPhonenumber(phone_txt.getText());
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        phonebook.sort();
     }
 
     public void delete()
     {
-        phonebook.delete(page-1);
-        page--;
+        phonebook.delete(page - 1);
         displayPage(page);
     }
 
     public void displayPage(int index)
     {
-        Person p = phonebook.getPerson(index - 1);
-        name_txt.setText(p.getName());
-        phone_txt.setText(p.getPhonenumber());
-        address_txt.setText(p.getAddress());
-        site_lbl.setText("Seite " + (index) + "/" + phonebook.getSize());
+        try {
+            Person p = phonebook.getPerson(index - 1);
+            name_txt.setText(p.getName());
+            phone_txt.setText(p.getPhonenumber());
+            address_txt.setText(p.getAddress());
+            site_lbl.setText("Seite " + (index) + "/" + phonebook.getSize());
+        }
+        catch (Exception e)
+        {
+            System.out.println("Fehler!");
+        }
     }
 
     public static void show(Stage primaryStage)

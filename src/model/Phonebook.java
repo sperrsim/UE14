@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class Phonebook {
 
     public void save_csv()
     {
+        sort();
         try(BufferedWriter bw = new BufferedWriter(new FileWriter("phonebook.csv")))
         {
             for (int c = 0; c < phonebook.size(); c++)
@@ -52,19 +54,15 @@ public class Phonebook {
         } catch (Exception e) {
             System.out.println("Fehler beim Laden!");
         }
+        sort();
     }
 
-    public void saveChanges(String name, String address, String phone, int index)
-    {
-        Person p = phonebook.get(index);
-        p.setName(name);
-        p.setAddress(address);
-        p.setPhonenumber(phone);
-    }
+
 
     public void newPage()
     {
         phonebook.add(new Person());
+        sort();
     }
 
     public Person getPerson(int index)
@@ -76,7 +74,6 @@ public class Phonebook {
         }
         catch (Exception e)
         {
-
         }
         return p;
     }
@@ -95,6 +92,11 @@ public class Phonebook {
         {
             System.out.println("Fehler beim Löschen!");
         }
+        sort();
+    }
 
+    public void sort()
+    {
+        Collections.sort(phonebook);
     }
 }
