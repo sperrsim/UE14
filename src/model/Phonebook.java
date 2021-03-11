@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @version 2020.3, 18.02.2021
  **/
 public class Phonebook {
-    private List<Person> phonebook = new LinkedList<Person>();
+    private ArrayList<Person> phonebook = new ArrayList<>();
 
     public Phonebook()
     {
@@ -43,9 +44,11 @@ public class Phonebook {
             while ((s = br.readLine()) != null)
             {
                 String split[] = s.split(",");
-                phonebook.add(new Person(split[0], split[1], split[2]));
+                phonebook.add(new Person((split.length >= 1 && !split[0].isEmpty() ? split[0] : ""),
+                        (split.length >= 2 && !split[1].isEmpty() ? split[1] : null),
+                        (split.length >= 3 && !split[2].isEmpty() ? split[2] : ""));
             }
-            System.out.println("Erfolgreich geladen!");
+            System.out.println(phonebook.size() + " Kontakte erfolgreich geladen!");
         } catch (Exception e) {
             System.out.println("Fehler beim Laden!");
         }

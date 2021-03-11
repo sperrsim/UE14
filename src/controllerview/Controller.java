@@ -1,9 +1,15 @@
 package controllerview;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.Person;
 import model.Phonebook;
 
@@ -41,6 +47,7 @@ public class Controller implements Initializable {
 
     public void nextPage()
     {
+        save();
         if(page < phonebook.getSize())
         {
             page++;
@@ -55,6 +62,7 @@ public class Controller implements Initializable {
 
     public void previousPage()
     {
+        save();
         if(page > 1)
         {
             page--;
@@ -79,18 +87,6 @@ public class Controller implements Initializable {
         displayPage(page);
     }
 
-    public void save_csv()
-    {
-        phonebook.save_csv();
-    }
-
-    public void load_csv()
-    {
-        phonebook.load_csv();
-        page = 1;
-        displayPage(page);
-    }
-
     public void displayPage(int index)
     {
         Person p = phonebook.getPerson(index - 1);
@@ -100,9 +96,26 @@ public class Controller implements Initializable {
         site_lbl.setText("Seite " + (index) + "/" + phonebook.getSize());
     }
 
+    public static void show(Stage primaryStage)
+    {
+        FXMLLoader fxl = new FXMLLoader(Controller.class.getResource("controllerview/book.fxml"));
+        Parent root = (Parent)fxl.load();
+        primaryStage.setTitle("Phonebook in JavaFX by Sperr");
+        primaryStage.setScene(new Scene(root, 500, 500));
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Phonebook ctrl = fxl.getController();
+                ctrl.save_csv();
+            }
+        });
+        primaryStage.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         phonebook = new Phonebook();
+        phonebook.load_csv();
         page = 1;
         displayPage(page);
     }

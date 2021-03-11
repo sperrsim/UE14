@@ -4,16 +4,16 @@ package model;
  * @author Simon Sperr
  * @version 2020.3, 18.02.2021
  **/
-public class Person {
+public class Person implements Comparable{
     private String name;
     private String address;
     private String phonenumber;
 
     public Person()
     {
-        setAddress("-");
-        setName("-");
-        setPhonenumber("-");
+        setAddress("");
+        setName("");
+        setPhonenumber("");
     }
 
     public Person(String name, String address, String phonenumber) {
@@ -49,5 +49,12 @@ public class Person {
 
     public String getPhonenumber() {
         return phonenumber;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Person p = (Person) o;
+
+        return this.name.compareToIgnoreCase(p.getName());
     }
 }
