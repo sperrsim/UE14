@@ -28,8 +28,8 @@ public class Person implements Comparable{
     }
 
     public void setName(String name) throws Exception{
-        if (name == null) {
-            throw new Exception("Name muss angegeben werden!");
+        if (name == null || name.length() == 0) {
+            throw new Exception("Der Name darf nicht leer bleiben!");
         }
 
         name = name.trim();
@@ -42,14 +42,14 @@ public class Person implements Comparable{
     }
 
     public void setPhonenumber(String phonenumber) throws Exception{
-        if (phonenumber == null) {
-            throw new Exception("Geben sie bitte eine Telefonnummer ein!");
+        if (phonenumber == null || name.length() == 0) {
+            throw new Exception("Die Telefonnummer darf nicht leer bleiben!");
         }
 
         phonenumber = phonenumber.trim();
 
         if (!phonenumber.isEmpty() && !phonenumber.matches("^[0-9]*/[0-9]*$")) {
-            throw new Exception("Telefonnummer darf nur aus Ziffern und \"/\" bestehen!");
+            throw new Exception("Die Telefonnummer muss aus Zahlen und / bestehen!");
         }
         this.phonenumber = phonenumber;
     }

@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @author Simon Sperr
@@ -31,7 +29,7 @@ public class Phonebook {
                 bw.write(phonebook.get(c).toString());
                 bw.newLine();
             }
-            System.out.println("Speichern erfolgreich!");
+            System.out.println(phonebook.size() + " Kontakte erfolgreich gespeichert!");
         } catch (Exception e) {
             System.out.println("Fehler beim Speichern!");
         }
